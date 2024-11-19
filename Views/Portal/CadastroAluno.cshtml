@@ -1,0 +1,83 @@
+﻿@using TechStars_Academy.Models
+
+@model CadastroAlunoModel
+
+@{
+	ViewData["title"] = "Cadastro do aluno e lançamento de notas";
+}
+
+@using (Html.BeginForm("CadastroAluno", "Portal", FormMethod.Post, new {@class = "mt-5" })){
+	<div class="mb-5">
+		<h1 class="display-4 text-center">@ViewData["title"]</h1>
+
+		<div class="row g-3 mt-5 mb-5">
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Nome, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Nome, new{@class = "form-control"})
+			</div>
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Serie, new{@class = "form-label"})
+				@Html.DropDownListFor(Model => Model.Serie, new SelectList(Enum.GetValues(typeof(SeriesModel.Series))), new { @class = "form-control" })
+			</div>
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Turno, new{@class = "form-label"})
+				@Html.DropDownListFor(Model => Model.Turno, new SelectList(Enum.GetValues(typeof(TurnoModel))), new{@class = "form-control"})
+			</div>
+		</div>
+
+		<hr />
+
+		<div class="lancamentoDeNOtas">
+			<div class="mt-4 mb-4">
+				<h2 class="display-6">Lançamento de notas</h2>
+			</div>
+		</div>
+
+		<div class="row g-3">
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Logica, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Logica, new{@class = "form-control w-25", @maxlength = "3", @id = "logica", @placeholder = "0.0"})
+			</div>
+		</div>
+
+		<div class="row g-3">
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Estruturas_de_Dados_e_Algoritmos, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.Estruturas_de_Dados_e_Algoritmos, new { @class = "form-control w-25", @maxlength = "3", @id = "EstrutDados", @placeholder = "0.0" })
+			</div>
+		</div>
+
+		<div class="row g-3">
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.POO, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.POO, new { @class = "form-control", @id = "POO", @placeholder = "0.0" })
+			</div>
+		</div>
+
+		<div class="row g-3">
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Banco_de_Dados, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Banco_de_Dados, new { @class = "form-control", @id = "Banco_de_Dados", @placeholder = "0.0" })
+			</div>
+		</div>
+
+		<div class="mediaGeral">
+			<div class="mt-4 mb-4">
+				<h2 class="display-6">Média geral do aluno</h2>
+			</div>
+		</div>
+
+		<div class="row g-3">
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Media, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Media, new{@class = "form-control w-25", @id = "media", @disabled = "disabled"})
+			</div>
+		</div>
+		<div class="row g-3 mt-3">
+			<div class="col-12">
+				<button type="submit" class="btn btn-success"><i class="bi bi-floppy-fill"></i> Salvar</button>
+				<a asp-controller="Portal" asp-action="Index" class="btn btn-primary"><i class="bi bi-arrow-return-left"></i> Voltar</a>
+			</div>
+		</div>
+	</div>
+}
