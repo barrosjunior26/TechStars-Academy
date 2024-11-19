@@ -50,29 +50,47 @@
 		<div class="row g-3">
 			<div class="col-md-3">
 				@Html.LabelFor(Model => Model.POO, new { @class = "form-label" })
-				@Html.TextBoxFor(Model => Model.POO, new { @class = "form-control", @id = "POO", @placeholder = "0.0" })
+				@Html.TextBoxFor(Model => Model.POO, new { @class = "form-control w-25", @id = "POO", @maxlength = "3", @placeholder = "0.0" })
 			</div>
 		</div>
 
 		<div class="row g-3">
 			<div class="col-md-3">
 				@Html.LabelFor(Model => Model.Banco_de_Dados, new{@class = "form-label"})
-				@Html.TextBoxFor(Model => Model.Banco_de_Dados, new { @class = "form-control", @id = "Banco_de_Dados", @placeholder = "0.0" })
-			</div>
-		</div>
-
-		<div class="mediaGeral">
-			<div class="mt-4 mb-4">
-				<h2 class="display-6">Média geral do aluno</h2>
+				@Html.TextBoxFor(Model => Model.Banco_de_Dados, new { @class = "form-control w-25", @id = "Banco_de_Dados", @maxlength = "3", @placeholder = "0.0" })
 			</div>
 		</div>
 
 		<div class="row g-3">
-			<div class="col-md-3">
-				@Html.LabelFor(Model => Model.Media, new{@class = "form-label"})
-				@Html.TextBoxFor(Model => Model.Media, new{@class = "form-control w-25", @id = "media", @disabled = "disabled"})
+			<div class="mediaGeral d-flex">
+				<div class="mt-4 mb-4">
+					<h2 class="display-6 mx-2">Média geral do aluno</h2>
+				</div>
+				<div class="mt-4 mb-4">
+					<h2 class="display-6"> | </h2>
+				</div>
+				<div class="desempenho">
+					<div class="mt-4 mb-4">
+						<h2 class="display-6 m-2">Desempenho do aluno</h2>
+					</div>
+				</div>
 			</div>
 		</div>
+
+		<div class="col-md-3">
+			@Html.LabelFor(Model => Model.Media, new { @class = "form-label" })
+			@Html.TextBoxFor(Model => Model.Media, new { @class = "form-control w-25", @id = "media", @disabled = "disabled" })
+		</div>
+
+		<div class="row g-3">
+			
+		</div>
+
+		<div class="row g-3">
+			
+
+		</div>
+
 		<div class="row g-3 mt-3">
 			<div class="col-12">
 				<button type="submit" class="btn btn-success"><i class="bi bi-floppy-fill"></i> Salvar</button>
