@@ -62,33 +62,23 @@
 		</div>
 
 		<div class="row g-3">
-			<div class="mediaGeral d-flex">
+			<div class="mediaGeral">
 				<div class="mt-4 mb-4">
 					<h2 class="display-6 mx-2">Média geral do aluno</h2>
 				</div>
-				<div class="mt-4 mb-4">
-					<h2 class="display-6"> | </h2>
-				</div>
-				<div class="desempenho">
-					<div class="mt-4 mb-4">
-						<h2 class="display-6 m-2">Desempenho do aluno</h2>
-					</div>
+				<div class="col-md-3">
+					@Html.LabelFor(Model => Model.Media, new { @class = "form-label" })
+					@Html.TextBoxFor(Model => Model.Media, new { @class = "form-control w-25", @id = "media", @disabled = "disabled"})
 				</div>
 			</div>
-		</div>
-
-		<div class="col-md-3">
-			@Html.LabelFor(Model => Model.Media, new { @class = "form-label" })
-			@Html.TextBoxFor(Model => Model.Media, new { @class = "form-control w-25", @id = "media", @disabled = "disabled" })
-		</div>
-
-		<div class="row g-3">
-			
-		</div>
-
-		<div class="row g-3">
-			
-
+			<div class="desempenhoAluno">
+				<div class="mt-4 mb-4">
+					<h2 class="display-6 mx-2">Desempenho do aluno</h2>
+				</div>
+				<div class="col-md-3">
+					<label id="result">Aguardando informações...</label>
+				</div>
+			</div>
 		</div>
 
 		<div class="row g-3 mt-3">
