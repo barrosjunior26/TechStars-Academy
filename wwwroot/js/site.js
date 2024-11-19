@@ -1,4 +1,5 @@
-﻿function calculoMedia() {
+﻿//Função para atualizar em tempo real a média do aluno
+function calculoMedia() {
     var logica = parseFloat(window.document.getElementById('logica').value) || 0;
     var EstrutDados = parseFloat(window.document.getElementById('EstrutDados').value) || 0;
 
