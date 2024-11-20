@@ -1,0 +1,71 @@
+﻿@using TechStars_Academy.Models
+
+@model IEnumerable<CarreirasModel>
+
+@{
+	ViewData["title"] = "Página da vaga";
+}
+
+<div class="mb-5 m-0 p-0">
+	<img src="~/img/img-Index-Vagas.jpeg" class="img-fluid" />
+</div>
+
+<div class="mt-5 mb-5">
+	<h1 class="display-6 text-center">TechStars Academy</h1>
+</div>
+
+<div class="container">
+	<div class="Apresentacao mb-4">
+		<h5 class="text-center text-uppercase">Seja bem-vindo à TechStars Academy</h5>
+	</div>
+
+	<p class="text-uppercase">
+		ENTRE PARA UM TIME QUE SONHA TÃO GRANDE COMO VOCÊ!
+	</p>
+	<p>Somos uma equipe apaixonada pelo que fazemos. Temos um orgulho imenso do nosso impacto positivo e reconhecemos que, agindo como donos e donas, cada um de nós desempenha um papel fundamental no sucesso do nosso ecossistema educacional. Todas as nossas grandes conquistas têm o sabor da colaboração! Nosso sucesso é compartilhado e acreditamos que, por meio da colaboração, podemos encantar ainda mais nossos alunos e gestores com as ferramentas e recursos que oferecemos hoje, ao mesmo tempo em que atendemos às necessidades de amanhã.</p>
+	<p>📚</p>
+	<p>Nossa cultura é focada em construir um ambiente inclusivo e colaborativo, onde as pessoas possam ser a melhor versão delas mesmas - e nos ajudar a ser a nossa melhor versão! Procuramos pessoas com paixão, curiosidade e coragem para fazer a diferença aqui.</p>
+	<p>Acolhemos talentos diversos, porque acreditamos que grandes ideias vêm de pessoas com diferentes trajetórias. Oferecemos oportunidades para talentos que estão ingressando no mercado de trabalho e somos apaixonados por impulsionar nossa equipe.</p>
+	<p><strong>É trabalhando e crescendo juntos que atingimos o nosso propósito: Sonhamos Grande por um Futuro com Mais Razões para Celebrar!</strong></p>
+	
+	<div class="card mt-5 mb-4">
+		<div class="card-header">Pesquisa de vaga</div>
+		<div class="card-body">
+			<form method="get" asp-controller="Portal" asp-action="Carreiras">
+				<div class="row g-3">
+					<div class="col-6">
+						<input type="text" name="pesquisa" class="form-control" placeholder="Digite o nome da vaga" />
+					</div>
+					<div class="col-6">
+						<button type="submit" class="btn btn-primary">Pesquisar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			@{
+				if(Model != null){
+					if(Model.Count() > 0){
+						foreach(var vaga in Model){
+							<tr>
+								<td><a asp-controller="Portal" asp-action="Detalhes" style="text-decoration: none; font-weight: 400; color:#003DAD;">@vaga.Cargo</a></td>
+								<td style="font-weight:400;">@vaga.Localizacao</td>
+								<td>@vaga.Tipo_de_vaga</td>
+							</tr>
+						}
+					}
+				}
+			}
+		</tbody>
+	</table>
+</div>
