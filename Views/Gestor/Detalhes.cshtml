@@ -1,0 +1,85 @@
+﻿@model TechStars_Academy.Models.AcessoPortal
+
+@{
+	ViewData["title"] = "Detalhamento de cadastro do colaborador";
+}
+
+<div class="container mt-5">
+
+	@{
+		if (TempData["atualizar"] != null)
+		{
+			<div class="alert alert-info" role="alert">
+				@TempData["atualizar"] <i class="bi bi-arrow-repeat"></i>
+			</div>
+		}
+
+		if (TempData["ErroAtualizar"] != null)
+		{
+			<div class="alert alert-danger" role="alert">
+				@TempData["ErroAtualizar"] <i class="bi bi-bug"></i>
+			</div>
+		}
+	}
+
+	<!--Título da página-->
+	<h1 class="display-4">@ViewData["title"]</h1>
+	<hr />
+
+	<!--Formulário de cadastro-->
+	@using (Html.BeginForm("Detalhes", "Gestor", FormMethod.Post, new { @class = "form-control" }))
+	{
+		<input type="hidden" asp-for="Identificacao" />
+
+		<!--Título Dados do colaborador-->
+		<div class="mb-3">
+			<h2 class="display-6">Dados do colaborador</h2>
+		</div>
+
+		<!--Dados pessoais do colaborador-->
+		<div class="row g-3">
+			<div class="col-md-1">
+				@Html.LabelFor(Model => Model.Identificacao, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.Identificacao, new { @class = "form-control text-uppercase text-danger", @MaxLength = "100", @disabled = "disabled",@style = "font-weight: 700" })
+			</div>
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Nome, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.Nome, new { @class = "form-control text-uppercase", @MaxLength = "100" })
+				<span asp-validation-for="Nome" class="text-danger"></span>
+			</div>
+			<div class="col-md-2">
+				@Html.LabelFor(Model => Model.CPF, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.CPF, new { @class = "form-control" })
+				<span asp-validation-for="CPF" class="text-danger"></span>
+			</div>
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Cargo, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.Cargo, new { @class = "form-control text-uppercase" })
+				<span asp-validation-for="Cargo" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="row g-3">
+			<div class="col-md-4">
+				@Html.LabelFor(Model => Model.Email, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.Email, new { @class = "form-control", @Maxlength = "100" })
+				<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+			<div class="col-md-2">
+				@Html.LabelFor(Model => Model.Senha, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.Senha, new { @class = "form-control", @Maxlength = "20", @type = "password" })
+				<span asp-validation-for="Senha" class="text-danger"></span>
+			</div>
+
+			<!--Botões-->
+			<div class="col-12">
+				<button type="submit" class="btn btn-success">Salvar <i class="bi bi-floppy"></i></button>
+				<a asp-controller="Gestor" asp-action="Index" class="btn btn-info">Voltar <i class="bi bi-arrow-return-left"></i></a>
+				<a asp-controller="Gestor" asp-action="Excluir" asp-route-id="@Model.Identificacao" class="btn btn-danger">Excluir <i class="bi bi-trash3"></i></a>
+			</div>
+		</div>
+	}
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Início";
+}
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/img/img-4.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="display-4" style="font-weight: 700;">TechStars Academy <i class="bi bi-cpu" style="color: #2F71BF"></i></h5>
+                <p>Este site escolar oferece uma plataforma totalmente abrangente para gestão escolar.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/img/img-1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="display-4" style="font-weight: 700;">Gestão de aluno <i class="bi bi-person-vcard"></i></h5>
+                <p>Plataforma abrangente para a gestão de aluno.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/img/img-2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="display-4" style="font-weight: 700;">Acompanhamento de desempenho dos alunos <i class="bi bi-graph-up-arrow" style="color: #003BBB"></i></h5>
+                <p>Acompanhe em tempo real como está o desempenho dos alunos de acordo com as notas lançadas durante do o ano letivo.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/img/img-3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="display-4" style="font-weight: 700;">Nosso objetivo <i class="bi bi-mortarboard" style="color: #ABCED0"></i></h5>
+                <p>Promover o desenvolvimento integral dos alunos, ensinando conhecimentos básicos, habilidades sociais e valores para a formação acadêmica e cidadã.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container">
+    <div class="mt-5">
+        <div class="row">
+            <div class="col-4">
+                <div class="linkDireto d-flex justify-content-center text-center">
+                    <a asp-controller="Home" asp-action="Sobre" id="SobreIcone">
+                        <div class="incone">
+                            <i class="bi bi-buildings-fill"></i>
+                        </div>
+                        <div class="texto">
+                            A TechStars Academy
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="linkDireto d-flex justify-content-center text-center">
+                    <a asp-controller="Login" asp-action="Entrar">
+                        <div class="incone">
+                            <i class="bi bi-person-badge-fill"></i>
+                        </div>
+                        <div class="texto">
+                            Portal do gestor
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="linkDireto d-flex justify-content-center text-center">
+                    <a href="#">
+                        <div class="incone">
+                            <i class="bi bi-rocket-takeoff-fill"></i>
+                        </div>
+                        <div class="texto">
+                            Carreiras
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="text-center mt-5 img-centro">
+        <a href="#"><img src="/img/img-cultura-respeito-inclusão.jpg" class="img-fluid" /></a>
+    </div>
+</div>

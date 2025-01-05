@@ -1,0 +1,112 @@
+﻿@model TechStars_Academy.Models.CadastroAluno
+
+@{
+	ViewData["title"] = "Cadastro do aluno";
+}
+
+<div class="container">
+
+	<!--Título da página-->
+	<div class="mt-5 mb-5">
+		<h1 class="display-4">@ViewData["title"]</h1>
+		<hr />
+	</div>
+
+
+
+	<!--Formulário de cadastro-->
+	@using(Html.BeginForm("Cadastro","Aluno", FormMethod.Post, new {@class = "form-control"})){
+
+		<!--Título lançamento de notas-->
+		<div class="mb-3">
+			<h2 class="display-6">Dados do aluno</h2>
+		</div>
+
+		<!--Dados pessoais do aluno-->
+		<div class="row g-3">
+			<div class="col-md-4">
+				@Html.LabelFor(Model => Model.Nome, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Nome, new { @class = "form-control text-uppercase" })
+			</div>
+			<div class="col-md-2">
+				@Html.LabelFor(Model => Model.Nascimento, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Nascimento, new{@class = "form-control", @type = "Date"})
+			</div>
+			<div class="col-md-1">
+				@Html.LabelFor(Model => Model.RG, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.RG, new { @class = "form-control", @MaxLength = "7"})
+			</div>
+			<div class="col-md-2">
+				@Html.LabelFor(Model => Model.CPF, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.CPF, new{@class = "form-control", @MaxLength = "11"})
+			</div>
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Sexo, new{@class = "form-label"})
+				<select class="form-control" asp-for="Sexo">
+					<option selected disabled value="">Selecione</option>
+					<option value="Masculino">Masculino</option>
+					<option value="Feminino">Feminino</option>
+				</select>
+			</div>
+		</div>
+		<div class="row g-3 mt-3">
+			<div class="col-md-4">
+				@Html.LabelFor(Model => Model.Responsavel, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Responsavel, new { @class = "form-control text-uppercase" })
+			</div>
+			<div class="col-md-2">
+				@Html.LabelFor(Model => Model.CPF_Responsavel, new { @class = "form-label" })
+				@Html.TextBoxFor(Model => Model.CPF_Responsavel, new { @class = "form-control", @MaxLenght = "11"})
+			</div>
+		</div>
+
+		<!--Título lançamento de notas-->
+		<div class="mt-5 mb-3">
+			<h2 class="display-6">Lançamento de notas</h2>
+		</div>
+
+		<!--Tabela para lançamento de notas de acordo com sua respectiva disciplina-->
+		<table class="table table-info table-borderless" id="tabelaDinamica">
+			<thead class="text-dark">
+				<tr class="text-center">
+					<th scope="col">Disciplina</th>
+					<th scope="col">Nota</th>
+					<th scope="col" class="d-flex align-items-center">
+						Média
+						<input type="text" asp-for="MediaGeral" class="form-control mediaGeral" style="height: 24px; border: none; margin-left: 8px; text-align: center; font-weight: 500; background-color: #F8F9FA;" readonly />
+					</th>
+				</tr>
+			</thead>
+			<tbody class="table-light">
+				<tr>
+					<td>
+						<select class="form-control">
+							<option selected disabled value="">Selecione</option>
+							<option value="Fundamentos de Computação">Fundamentos de Computação</option>
+							<option value="Desenvolvimento de Software">Desenvolvimento de Software</option>
+							<option value="Infraestrutura e Sistemas Operacionais">Infraestrutura e Sistemas Operacionais</option>
+							<option value="Tecnologias e Ferramentas">Tecnologias e Ferramentas</option>
+							<option value="Matemática e Estatística">Matemática e Estatística</option>
+							<option value="Soft Skills e Gestão">Soft Skills e Gestão</option>
+						</select>
+					</td>
+					<td>
+						<input type="text" class="form-control notaInput" maxlength="4" />
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary addLinha"><i class="bi bi-file-earmark-plus-fill"></i></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!--Botões de salvamento, cancelamento e voltar-->
+		<div class="row g-3 mt-3">
+			<div class="col-12">
+				<button type="submit" class="btn btn-success">Salvar <i class="bi bi-floppy"></i></button>
+				<button type="reset" class="btn btn-warning">Limpar <i class="bi bi-eraser"></i></button>
+				<a asp-controller="Gestor" asp-action="Index" class="btn btn-danger">Cancelar <i class="bi bi-x-circle"></i></a>
+			</div>
+		</div>
+	}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>

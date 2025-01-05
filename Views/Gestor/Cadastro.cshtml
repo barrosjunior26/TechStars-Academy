@@ -1,0 +1,67 @@
+﻿@model TechStars_Academy.Models.AcessoPortal
+
+@{
+	ViewData["title"] = "Novo cadastro para acesso ao Portal do Gestor";
+}
+
+<div class="container mt-5">
+
+	@{
+		if(TempData["CadastroSucesso"] != null){
+			<div class="alert alert-success" role="alert">
+				@TempData["CadastroSucesso"] <i class="bi bi-check-circle"></i>
+			</div>
+		}
+	}
+
+	<!--Título da página-->
+	<h1 class="display-4">@ViewData["title"]</h1>
+	<hr />
+
+	<!--Formulário de cadastro-->
+	@using(Html.BeginForm("Cadastro","Gestor", FormMethod.Post, new {@class = "form-control" }))
+	{
+		<!--Título Dados do colaborador-->
+		<div class="mb-3">
+			<h2 class="display-6">Dados do colaborador</h2>
+		</div>
+
+		<!--Dados pessoais do colaborador-->
+		<div class="row g-3">
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Nome, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Nome, new{@class = "form-control text-uppercase", @MaxLength = "100"})
+			</div>
+			<div class="col-md-2">
+				@Html.LabelFor(Model => Model.CPF, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.CPF, new{@class = "form-control"})
+			</div>
+			<div class="col-md-3">
+				@Html.LabelFor(Model => Model.Cargo, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Cargo, new{@class = "form-control text-uppercase"})
+			</div>
+		</div>
+		<div class="row g-3">
+			<div class="col-md-4">
+				@Html.LabelFor(Model => Model.Email, new{@class = "form-label"})
+				@Html.TextBoxFor(Model => Model.Email, new{@class = "form-control", @Maxlength = "100"})
+			</div>
+			<div class="col-md-2">
+				@Html.LabelFor(Model => Model.Senha, new{@class = "form-label"})
+				@Html.TextBoxFor(Model =>Model.Senha, new{@class = "form-control", @Maxlength = "20", @type = "password"})
+			</div>
+
+			<!--Botãoes-->
+			<div class="col-12">
+				<button type="submit" class="btn btn-success">Salvar <i class="bi bi-floppy"></i></button>
+				<button type="reset" class="btn btn-warning">Limpar <i class="bi bi-eraser"></i></button>
+				<a asp-controller="Gestor" asp-action="Index" class="btn btn-danger">Cancelar <i class="bi bi-x-circle"></i></a>
+				<a asp-controller="Gestor" asp-action="Colaboradores" class="btn btn-primary">Lista de colaboradores <i class="bi bi-person-lines-fill"></i></a>
+			</div>
+		</div>
+	}
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>

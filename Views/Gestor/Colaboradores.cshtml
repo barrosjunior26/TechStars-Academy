@@ -1,0 +1,54 @@
+﻿@using TechStars_Academy.Models
+
+@model IEnumerable<AcessoPortal>
+
+@{
+	ViewData["title"] = "Lista de colaboradores";
+}
+
+<div class="container mt-5">
+	<div class="d-flex justify-content-between">
+		<h1 class="display-4">@ViewData["title"]</h1>
+		<div class="botoes mt-4">
+			<a asp-controller="Gestor" asp-action="Cadastro" class="btn btn-success">Novo cadastro <i class="bi bi-person-add"></i></a>
+			<a asp-controller="Gestor" asp-action="Index" class="btn btn-info">Voltar <i class="bi bi-arrow-return-left"></i></a>
+		</div>
+	</div>
+
+	@{
+		if (TempData["ExcluirSucesso"] != null)
+		{
+			<div class="alert alert-danger" role="alert">
+				@TempData["ExcluirSucesso"] <i class="bi bi-trash3"></i>
+			</div>
+		}
+	}
+
+	<table class="table table-hover mt-5">
+		<thead>
+			<tr>
+				<th scope="col">Matrícula</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Cargo</th>
+			</tr>
+		</thead>
+		<tbody>
+			@{
+				if(Model != null){
+					foreach(var pessoa in Model)
+					{
+						<tr>
+							<td style="color:#C4ABD5">@pessoa.Identificacao</td>
+							<td style="color: #003BBB"><a asp-controller="Gestor" asp-action="Detalhes" asp-route-id="@pessoa.Identificacao" class="text-uppercase" style="text-decoration: none">@pessoa.Nome</a></td>
+							<td class="text-uppercase">@pessoa.Cargo</td>
+						</tr>
+					}
+				}
+			}
+		</tbody>
+	</table>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
